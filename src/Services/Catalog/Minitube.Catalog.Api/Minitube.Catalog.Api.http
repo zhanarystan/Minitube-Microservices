@@ -1,0 +1,6 @@
+@Minitube.Catalog.Api_HostAddress = http://localhost:5240
+
+GET {{Minitube.Catalog.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

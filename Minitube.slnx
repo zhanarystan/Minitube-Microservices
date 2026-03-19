@@ -1,0 +1,22 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/Services/" />
+  <Folder Name="/src/Services/Analytics/">
+    <Project Path="src/Services/Analytics/Minitube.Analytics.Api/Minitube.Analytics.Api.csproj" />
+  </Folder>
+  <Folder Name="/src/Services/Catalog/">
+    <Project Path="src/Services/Catalog/Minitube.Catalog.Api/Minitube.Catalog.Api.csproj" />
+  </Folder>
+  <Folder Name="/src/Services/Transcoder/">
+    <Project Path="src/Services/Transcoder/Minitube.Transcoder/Minitube.Transcoder.csproj" />
+  </Folder>
+  <Folder Name="/src/Services/Upload/">
+    <Project Path="src/Services/Upload/Minitube.Upload.Api/Minitube.Upload.Api.csproj" />
+    <Project Path="src/Services/Upload/Minitube.Upload.Application/Minitube.Upload.Application.csproj" />
+    <Project Path="src/Services/Upload/Minitube.Upload.Domain/Minitube.Upload.Domain.csproj" />
+    <Project Path="src/Services/Upload/Minitube.Upload.Infrastructure/Minitube.Upload.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Shared/">
+    <Project Path="src/Shared/Minitube.Shared/Minitube.Shared.csproj" />
+  </Folder>
+</Solution>
