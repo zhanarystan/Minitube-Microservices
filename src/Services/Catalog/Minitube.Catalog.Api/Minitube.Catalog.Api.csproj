@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\Minitube.Shared\Minitube.Shared.csproj" />
+    <ProjectReference Include="..\Minitube.Catalog.Application\Minitube.Catalog.Application.csproj" />
+    <ProjectReference Include="..\Minitube.Catalog.Infrastructure\Minitube.Catalog.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

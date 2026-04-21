@@ -1,0 +1,49 @@
+name: Deploy Minitube Upload Service
+
+on:
+  push:
+    branches: [ "main" ] # Trigger on push to main branch
+    paths:
+      - 'src/Services/Upload/**' # Only if this service is changed
+      - 'src/Shared/**'          # Or shared libraries
+      - '.github/workflows/**'   # Or the deployment config itself
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Login to Azure (using the large JSON)
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # 3. Login to your Container Registry (ACR)
+      - name: Login to ACR
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
+          username: ${{ secrets.REGISTRY_USERNAME }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      # 4. Build Docker image and push it to Azure
+      # Important: build context (dot at the end) — project root, not the Dockerfile folder!
+      - name: Build and Push Image
+        run: |
+          docker build -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/upload-api:${{ github.sha }} \
+                       -f src/Services/Upload/Minitube.Upload.Api/Dockerfile .
+          docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/upload-api:${{ github.sha }}
+
+      # 5. Deploy to Azure Container App
+      - name: Deploy to Azure Container App
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          acrName: ${{ secrets.REGISTRY_USERNAME }} # Registry name (admin user matches the name) 
+          containerAppName: ca-upload-service        # Check the name of your App in Azure!
+          resourceGroup: rg-minitube-dev-001             # Your resource group
+          imageToDeploy: ${{ secrets.REGISTRY_LOGIN_SERVER }}/upload-api:${{ github.sha }}

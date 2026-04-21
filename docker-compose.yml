@@ -1,0 +1,13 @@
+services:
+  upload-service:
+    container_name: minitube-upload
+    build:
+      context: .
+      dockerfile: src/Services/Upload/Minitube.Upload.Api/Dockerfile
+    ports:
+      - "5192:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - AZURE_CLIENT_ID=bc08e942-97d6-4937-b1b6-d71cddb8c206
+      - AZURE_TENANT_ID=d8b4095b-a78f-48d7-9806-2736843de26b
+      - AZURE_CLIENT_SECRET=ntz8Q~JcGj8dcNm1kDsXWkXatIg_NvOITiAYicth

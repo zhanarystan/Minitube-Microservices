@@ -6,6 +6,9 @@
   </Folder>
   <Folder Name="/src/Services/Catalog/">
     <Project Path="src/Services/Catalog/Minitube.Catalog.Api/Minitube.Catalog.Api.csproj" />
+    <Project Path="src/Services/Catalog/Minitube.Catalog.Application/Minitube.Catalog.Application.csproj" />
+    <Project Path="src/Services/Catalog/Minitube.Catalog.Domain/Minitube.Catalog.Domain.csproj" />
+    <Project Path="src/Services/Catalog/Minitube.Catalog.Infrastructure/Minitube.Catalog.Infrastructure.csproj" />
   </Folder>
   <Folder Name="/src/Services/Transcoder/">
     <Project Path="src/Services/Transcoder/Minitube.Transcoder/Minitube.Transcoder.csproj" />
