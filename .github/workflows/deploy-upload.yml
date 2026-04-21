@@ -44,6 +44,6 @@ jobs:
         uses: azure/container-apps-deploy-action@v1
         with:
           acrName: ${{ secrets.REGISTRY_USERNAME }} # Registry name (admin user matches the name) 
-          containerAppName: ca-upload-service        # Check the name of your App in Azure!
+          containerAppName: upload-api        # Check the name of your App in Azure!
           resourceGroup: rg-minitube-dev-001             # Your resource group
           imageToDeploy: ${{ secrets.REGISTRY_LOGIN_SERVER }}/upload-api:${{ github.sha }}
